@@ -1,22 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
+import {
+    FlexDiv,
+    Title,
+    Subtitle,
+} from "./assets/styles/utils";
+import Form from "./components/Form/Form";
+import Results from "./components/Results/Results";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+    const [results, setResults] = useState([]);
+
+    return (
+    <div className="app">
+      <header className="title">
+        <Title textAlign="center" size="big">
+          Github Extension Counter
+        </Title>
+        <Subtitle>
+            Añade la URL del repositorio que quieras analizar
+        </Subtitle>
+        <FlexDiv className="content" flexDirection="column" justifyContent="flex-start">
+            <Form setResults={setResults} />
+            <Results list={results} />
+        </FlexDiv>
       </header>
     </div>
   );
